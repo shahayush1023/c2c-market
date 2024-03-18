@@ -43,7 +43,7 @@ def inbox(request):
 
         return render(request,'inbox.html',{'conversations':conversations})
 
-@login_required
+@login_required(login_url='login')
 def detail(request,pk):
      conversation = Conversation.objects.filter(members__in=[request.user.id]).get(pk=pk)
 
