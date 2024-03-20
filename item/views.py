@@ -14,7 +14,7 @@ def items(request):
     if category_id:
         items = items.filter(category_id = category_id)
     if query:
-        items = items.filter(Q(name__icontains=query) | Q(description_icontains=query))
+        items = items.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     return render(request,'browse.html',{'items':items,
     'query':query,  'categories':categories,'category_id':int(category_id)
