@@ -65,5 +65,12 @@ def detail(request,pk):
 
      return render(request,'condetail.html',{
           'conversations':conversation,
-          'form':form
+          'form':form,
+          'user':request.user
      })
+
+@login_required
+def delete(request,pk):
+     conversation = Conversation.objects.filter(members__in=[request.user.id]).get(pk=pk)
+     conversation.delete()
+     return redirect('conversation:inbox')

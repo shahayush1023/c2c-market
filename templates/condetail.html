@@ -2,6 +2,7 @@
 {%block content%}
 
 <h1 class="mb-6 text-3xl">Conversations</h1>
+<a href="{%url 'conversation:delete' conversations.id %}" class="py-2 px-8 text-lg bg-red-500  hover:bg-red-700 rounded-xl text-white">Clear Chat</a>
 
 <div class="space-y-6">
     {%for message in conversations.messages.all%}
